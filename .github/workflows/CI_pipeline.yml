@@ -25,11 +25,12 @@
        run: |
          pip install databricks-cli
 
-   |
+     - name: Configure Databricks CLI
+  run: |
     databricks configure --token <<EOF
     https://<your-databricks-host>
     <your-databricks-token>
     EOF
-
+    
      - name: Upload sample data to DBFS
        run: databricks fs cp sample_sales.csv dbfs:/FileStore/sample_sales.csv --overwrite
